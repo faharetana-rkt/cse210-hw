@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        /** This program asks for the user's Grade percentage's
+        and through a series of if and else if, converts the grade
+        to a letter with a minus or plus.
+         **/
         Console.Write("What is your grade percentage? ");
 		string textGrade = Console.ReadLine();
 		int grade = int.Parse(textGrade);
