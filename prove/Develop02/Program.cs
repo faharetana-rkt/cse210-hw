@@ -6,8 +6,7 @@ class Program
     static void Main(string[] args)
     {
         int choice = 0;
-        List<string> entries = new List<string>();
-
+        Journal journal = new Journal();
         while (choice != 5)
         {
             Console.WriteLine("Please select one of these choices:");
@@ -27,30 +26,25 @@ class Program
                 Entry entry = new Entry();
                 entry._prompt = strPrompt;
                 entry._response = Console.ReadLine();
-                string strEntry = entry.GetDisplayString(entry._date, entry._hour, entry._prompt, entry._response);
+                //string strEntry = entry.GetDisplayString(entry._date, entry._hour, entry._prompt, entry._response);
                 //Console.WriteLine(strEntry);
-
-                Journal journal = new Journal();
-                journal.AddEntry(strEntry, entries);
+                journal.AddEntry(entry);
             }
             else if (choice == 2)
             {
-                Journal journal = new Journal();
-                journal.Display(entries);
+                journal.Display();
             }
             else if (choice == 3)
             {
-                Journal journal = new Journal();
                 Console.WriteLine("What is the name of the file?");
                 string fileName = Console.ReadLine();
-                journal.Load(fileName, entries);
+                journal.Load(fileName);
             }
             else if (choice == 4)
             {
-                Journal journal = new Journal();
                 Console.WriteLine("What is the name of the file?");
                 string fileName = Console.ReadLine();
-                journal.Save(fileName, entries);
+                journal.Save(fileName);
             }
         }
     }

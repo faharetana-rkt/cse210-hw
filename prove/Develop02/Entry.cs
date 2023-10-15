@@ -9,9 +9,9 @@ public class Entry
 	{
 	}
 
-	public string GetDisplayString(string date, string hour, string prompt, string response)
+	public string GetDisplayString()
 	{
-		return $"{date} {hour} - {prompt} \n{response}";
+		return $"{_date} {_hour} - {_prompt} \n{_response}";
 	}
 
 }
