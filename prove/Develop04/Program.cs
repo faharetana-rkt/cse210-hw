@@ -10,6 +10,8 @@ class Program
 		// activity.CountDownTimer(6);
         // activity.ShowSpinner(8);
         //Console.WriteLine("©");
+        BreathingActivity breathe = new BreathingActivity();
+        breathe.Run();
 
     }
 }

@@ -10,7 +10,7 @@ public class Activity
         _description = description;
     }
 
-    private void ClearCharacter(int charCount)
+    protected void ClearCharacter(int charCount)
     {
         string space = new string(' ', charCount);
         Console.Write($"\b{space}\b");
@@ -22,6 +22,7 @@ public class Activity
         Console.WriteLine();
         Console.WriteLine(_description);
         Console.Write("How long in seconds would you like for your session? ");
+        Console.WriteLine();
     }
 
     protected void DisplayEndingMessage()
@@ -30,6 +31,7 @@ public class Activity
         Console.WriteLine(
             $"You have completed another {_durationInSeconds} seconds of the {_name}."
         );
+        Console.WriteLine();
     }
 
     protected void CountDownTimer(int seconds)
