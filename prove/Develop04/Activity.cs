@@ -18,6 +18,7 @@ public class Activity
 
     protected void DisplayStartingMessage()
     {
+        Console.Clear();
         Console.WriteLine($"Welcome to the {_name}");
         Console.WriteLine();
         Console.WriteLine(_description);
@@ -27,11 +28,16 @@ public class Activity
 
     protected void DisplayEndingMessage()
     {
+        Console.WriteLine();
         Console.WriteLine("Well done!!!");
+        ShowSpinner(6);
+        Console.WriteLine();
         Console.WriteLine(
             $"You have completed another {_durationInSeconds} seconds of the {_name}."
         );
         Console.WriteLine();
+        ShowSpinner(6);
+        Console.Clear();
     }
 
     protected void CountDownTimer(int seconds)
@@ -48,7 +54,7 @@ public class Activity
     {
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(seconds);
-        List<string> animationString = new List<string> { "▲", "►", "▼", "◄"};
+        List<string> animationString = new List<string> { "▲", "►", "▼", "◄" };
         int i = 0;
         while (DateTime.Now < endTime)
         {
