@@ -10,4 +10,11 @@ public class SimpleGoal : CompletableGoal
         CompleteGoal();
         return _points;
     }
+
+    public override string ToSavedStr()
+    {
+        string className = nameof(SimpleGoal);
+		string saved = $"{className}:{_name},{_description},{_points},{_isFinished}";
+		return saved;
+    }
 }

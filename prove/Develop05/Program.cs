@@ -8,12 +8,66 @@ class Program
     static void Main(string[] args)
     {
         int totalPoints = 0;
+        int expPoints = 500;
         int choice = 0;
+        string level = "Level 1";
         List<Goal> goalList = new List<Goal>();
+
+        void CheckLevel()
+        {
+            if (totalPoints < 500)
+            {
+                level = "Level 1";
+            }
+            else if (totalPoints >= 500 && totalPoints < 1000)
+            {
+                level = "Level 2";
+            }
+            else if (totalPoints >= 1000 && totalPoints < 1500)
+            {
+                level = "Level 3";
+            }
+            else if (totalPoints >= 1500 && totalPoints < 2000)
+            {
+                level = "Level 4";
+            }
+            else if (totalPoints >= 2000 && totalPoints < 2500)
+            {
+                level = "Level 5";
+            }
+        }
+
+        void ExpNeeded()
+        {
+            if (level == "Level 1")
+            {
+                expPoints = 500 - totalPoints;
+            }
+            else if (level == "Level 2")
+            {
+                expPoints = 1000 - totalPoints;
+            }
+            else if (level == "Level 3")
+            {
+                expPoints = 1500 - totalPoints;
+            }
+            else if (level == "Level 4")
+            {
+                expPoints = 2000 - totalPoints;
+            }
+            else if (level == "Level 5")
+            {
+                expPoints = 2500 - totalPoints;
+            }
+        }
+
 
         while (choice != 6)
         {
             Console.WriteLine($"You have {totalPoints} points.");
+            Console.WriteLine($"You are now {level}. You need {expPoints} more points to reach the next level.");
+            CheckLevel();
+            ExpNeeded();
             Console.WriteLine();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Goal");
@@ -21,7 +75,7 @@ class Program
             Console.WriteLine("  3. Save Goals");
             Console.WriteLine("  4. Load Goals");
             Console.WriteLine("  5. Record Event");
-            Console.WriteLine("  6. List Goals");
+            Console.WriteLine("  6. Quit");
             Console.Write("Select a choice from the menu: ");
             choice = int.Parse(Console.ReadLine());
             if (choice == 1)
@@ -72,22 +126,19 @@ class Program
                     goalList.Add(myChecklistGoal);
                     Console.WriteLine();
                 }
-
             }
-
             else if (choice == 2)
             {
                 int count = 1;
                 Console.WriteLine("The goals are: ");
                 foreach (Goal goal in goalList)
                 {
-                    Console.WriteLine($"{count}. {goal.ToString()}");
+                    Console.WriteLine($"{count}. {goal.ToStr()}");
                     count++;
                 }
                 Console.WriteLine();
 
             }
-
             else if (choice == 3)
             {
                 Console.Write("What is the name for the goal file? ");
@@ -119,12 +170,83 @@ class Program
                         if (parts[0] == "SimpleGoal")
                         {
                             string[] items = parts[1].Split(",");
-                            
+                            string name = items[0];
+                            string description = items[1];
+                            int points = int.Parse(items[2]);
+                            bool isFinished = false;
+                            if (items[3] == "false")
+                            {
+                                isFinished = false;
+                            }
+                            else
+                            {
+                                isFinished = true;
+                            }
+
+                            SimpleGoal mySimpleGoal = new SimpleGoal(name, description, points);
+                            mySimpleGoal.SetIsFinished(isFinished);
+                            goalList.Add(mySimpleGoal);
+                        }
+                        else if (parts[0] == "EternalGoal")
+                        {
+                            string[] items = parts[1].Split(",");
+                            string name = items[0];
+                            string description = items[1];
+                            int points = int.Parse(items[2]);
+                            EternalGoal myEternalGoal = new EternalGoal(name, description, points);
+                            goalList.Add(myEternalGoal);
+                        }
+                        else if (parts[0] == "ChecklistGoal")
+                        {
+                            string[] items = parts[1].Split(",");
+                            string name = items[0];
+                            string description = items[1];
+                            int points = int.Parse(items[2]);
+                            int bonusPoints = int.Parse(items[3]);
+                            int timesToComplete = int.Parse(items[4]);
+                            int timesCompleted = int.Parse(items[5]);
+                            ChecklistGoal myChecklistGoal = new ChecklistGoal(name, description, points, timesToComplete, bonusPoints);
+                            myChecklistGoal.SetTimesCompleted(timesCompleted);
+                            goalList.Add(myChecklistGoal);
                         }
                     }
                 }
             }
 
+            else if (choice == 5)
+            {
+                if (goalList.Count == 0)
+                {
+                    Console.WriteLine("You haven't created any goals yet. Go create some and then come back.");
+                }
+                else
+                {
+                    int count = 1;
+                    Console.WriteLine("Which goal did you accomplish? ");
+                    foreach (Goal goal in goalList)
+                    {
+                        Console.WriteLine($"{count}. {goal.ToStr()}");
+                        count++;
+                    }
+
+                    int index = int.Parse(Console.ReadLine());
+                    if (index > goalList.Count || index <= 0)
+                    {
+                        Console.WriteLine($"Choose a number between 1 and {goalList.Count}.");
+                    }
+                    else
+                    {
+                        index = index - 1;
+                        int pointReceived = goalList[index].RecordEvent();
+                        totalPoints += pointReceived;
+                        Console.WriteLine($"Congratulations! You have earned {pointReceived} points!");
+                        Console.WriteLine($"You now have {totalPoints} points.");
+                        CheckLevel();
+                        ExpNeeded();
+                        Console.WriteLine();
+                    }
+                }
+            }
         }
     }
 }

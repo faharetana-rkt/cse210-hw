@@ -28,6 +28,11 @@ public class ChecklistGoal : CompletableGoal
         return _timesCompleted++;
     }
 
+    public void SetTimesCompleted(int times)
+    {
+        _timesCompleted = times;
+    }
+
     public override int RecordEvent()
     {
         CompleteCheckList();
