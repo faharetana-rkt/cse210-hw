@@ -64,10 +64,10 @@ class Program
 
         while (choice != 6)
         {
-            Console.WriteLine($"You have {totalPoints} points.");
-            Console.WriteLine($"You are now {level}. You need {expPoints} more points to reach the next level.");
             CheckLevel();
             ExpNeeded();
+            Console.WriteLine($"You have {totalPoints} points.");
+            Console.WriteLine($"You are now {level}. You need {expPoints} more points to reach the next level.");
             Console.WriteLine();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Goal");
