@@ -11,6 +11,7 @@ public abstract class Goal
 		_points = points;
 	}
 
+
 	public virtual int RecordEvent()
 	{
 		return _points;

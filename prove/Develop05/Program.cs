@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.IO.Enumeration;
+using System.Security.Cryptography;
 
 class Program
 {
@@ -76,20 +77,15 @@ class Program
 
             else if (choice == 2)
             {
-                if (goalList.Count == 0)
+                int count = 1;
+                Console.WriteLine("The goals are: ");
+                foreach (Goal goal in goalList)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine($"{count}. {goal.ToString()}");
+                    count++;
                 }
-                else
-                {
-                    int count = 1;
-                    foreach (Goal goal in goalList)
-                    {
-                        Console.WriteLine($"{count}. {goal.ToString()}");
-                        count++;
-                    }
-                    Console.WriteLine();
-                }
+                Console.WriteLine();
+
             }
 
             else if (choice == 3)
@@ -108,7 +104,25 @@ class Program
 
             else if (choice == 4)
             {
-
+                Console.Write("What is the filename for the goal file? ");
+                string fileName = Console.ReadLine();
+                string[] lines = System.IO.File.ReadAllLines(fileName);
+                foreach (string line in lines)
+                {
+                    string[] parts = line.Split(":");
+                    if (parts.Length == 1)
+                    {
+                        totalPoints = int.Parse(parts[0]);
+                    }
+                    else
+                    {
+                        if (parts[0] == "SimpleGoal")
+                        {
+                            string[] items = parts[1].Split(",");
+                            
+                        }
+                    }
+                }
             }
 
         }

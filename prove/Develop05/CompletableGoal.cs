@@ -16,7 +16,7 @@ public class CompletableGoal : Goal
     public override string ToSavedStr()
     {
         string className = nameof(CompletableGoal);
-		string saved = $"{className}:{_name},{_description},{_points}, {_isFinished}";
+		string saved = $"{className}:{_name},{_description},{_points},{_isFinished}";
 		return saved;
     }
 
