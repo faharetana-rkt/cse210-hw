@@ -1,5 +1,7 @@
-525
+625
 EternalGoal:run,run for 10mn,100
 SimpleGoal:play guitar,play the guitar for 10mn,100,True
 ChecklistGoal:study,study for 30mn,75,250,4,1
 ChecklistGoal:play with itokiana,spend 15 mn playing with your kid,250,500,5,1
+SimpleGoal:Study the scripture,Spend at least 20 mn to study the scriptures,100,True
+SimpleGoal:run,run for at least 20mn,75,False

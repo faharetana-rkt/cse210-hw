@@ -174,7 +174,7 @@ class Program
                             string description = items[1];
                             int points = int.Parse(items[2]);
                             bool isFinished = false;
-                            if (items[3] == "false")
+                            if (items[3] == "False")
                             {
                                 isFinished = false;
                             }
@@ -237,13 +237,21 @@ class Program
                     else
                     {
                         index = index - 1;
-                        int pointReceived = goalList[index].RecordEvent();
-                        totalPoints += pointReceived;
-                        Console.WriteLine($"Congratulations! You have earned {pointReceived} points!");
-                        Console.WriteLine($"You now have {totalPoints} points.");
-                        CheckLevel();
-                        ExpNeeded();
-                        Console.WriteLine();
+                        if (goalList[index].GetGoalStatus() == true)
+                        {
+                            Console.WriteLine("This Goal has already been completed, go complete some other goals to earn points.");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            int pointReceived = goalList[index].RecordEvent();
+                            totalPoints += pointReceived;
+                            Console.WriteLine($"Congratulations! You have earned {pointReceived} points!");
+                            Console.WriteLine($"You now have {totalPoints} points.");
+                            CheckLevel();
+                            ExpNeeded();
+                            Console.WriteLine();
+                        }
                     }
                 }
             }

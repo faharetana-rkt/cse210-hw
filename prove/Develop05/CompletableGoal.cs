@@ -1,6 +1,5 @@
 public class CompletableGoal : Goal
 {
-    protected bool _isFinished = false;
 
     protected CompletableGoal(string name, string description, int points) : base(name, description, points)
     {
