@@ -9,6 +9,7 @@ public class Customer
         _address = address;
     }
 
+    // SMT you're supposed be checking if they reside in USA
     public bool IsResident()
     {
         if (_address.Location() == "National")

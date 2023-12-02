@@ -13,6 +13,8 @@ public class Address
 		_country = country;
 	}
 
+	// SMT method should return boolean i.e.
+	// public bool IsUsaAddress()
 	public string Location()
 	{
 		if (_country == "USA")
@@ -25,6 +27,7 @@ public class Address
 		}
 	}
 
+	// SMT you could use public override string ToString()
 	public string GetAddress()
 	{
 		return $"{_streetAddress} \n{_city}, {_stateProvince} \n{_country}";

@@ -9,8 +9,8 @@ public class Comment
 		_comment = comment;
 	}
 	
-	public string ToStr()
+	public override string ToString()
 	{
-		return $"--{_name}-- {_comment}";
+		return $"  --{_name}-- {_comment}";
 	}
 }

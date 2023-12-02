@@ -1,0 +1,79 @@
+diff --git a/final/Foundation1/Video.cs b/final/Foundation1/Video.cs
+index 43ce9eb..25f985f 100644
+--- a/final/Foundation1/Video.cs
++++ b/final/Foundation1/Video.cs
+@@ -3,8 +3,11 @@ public class Video
+ 	private string _title;
+ 	private string _author;
+ 	private int _length;
++
++	// SMT attributes should be private or at the very lease not writable.
+ 	public List<Comment> _comments = new List<Comment>();
+ 	
++	// SMT Create your List<Comment> and pass it into the constructor
+ 	public Video(string title, string author, int length)
+ 	{
+ 		_title = title;
+@@ -12,6 +15,8 @@ public class Video
+ 		_length = length;
+ 	}
+ 	
++	// SMT you should include the calls to Comment.ToStr() here. BTW, every object has an override method ToString() for you to do
++	// what you're doing with ToStr()
+ 	public string ToStr()
+ 	{
+ 		return $"Title: {_title}; Author: {_author}; Length in Seconds: {_length}; Number of Comments: {this.GetListCount()}.";
+diff --git a/final/Foundation2/Address.cs b/final/Foundation2/Address.cs
+index 34f3d80..78731e7 100644
+--- a/final/Foundation2/Address.cs
++++ b/final/Foundation2/Address.cs
+@@ -13,6 +13,8 @@ public class Address
+ 		_country = country;
+ 	}
+ 
++	// SMT method should return boolean i.e.
++	// public bool IsUsaAddress()
+ 	public string Location()
+ 	{
+ 		if (_country == "USA")
+@@ -25,6 +27,7 @@ public class Address
+ 		}
+ 	}
+ 
++	// SMT you could use public override string ToString()
+ 	public string GetAddress()
+ 	{
+ 		return $"{_streetAddress} \n{_city}, {_stateProvince} \n{_country}";
+diff --git a/final/Foundation2/Customer.cs b/final/Foundation2/Customer.cs
+index 4385e12..3db2bf3 100644
+--- a/final/Foundation2/Customer.cs
++++ b/final/Foundation2/Customer.cs
+@@ -9,6 +9,7 @@ public class Customer
+         _address = address;
+     }
+ 
++    // SMT you're supposed be checking if they reside in USA
+     public bool IsResident()
+     {
+         if (_address.Location() == "National")
+diff --git a/final/Foundation2/Order.cs b/final/Foundation2/Order.cs
+index b7228c1..ff10e0f 100644
+--- a/final/Foundation2/Order.cs
++++ b/final/Foundation2/Order.cs
+@@ -3,6 +3,7 @@ public class Order
+     private List<Product> _products = new List<Product>();
+     private Customer _customer;
+ 
++    // SMT since you're just hard-coding the Products you could just pass in a List<Product> to the constructor
+     public Order(Customer customer)
+     {
+         _customer = customer;
+@@ -36,6 +37,8 @@ public class Order
+         }
+     }
+ 
++    // SMT Do not use Console in classes. Instead create a method that returns a string, like ToString(), that returns the string 
++    // to display by Console in Main(). Take a look at StringBuilder.
+     public void GetPackingLabel()
+     {
+         Console.WriteLine(Line());

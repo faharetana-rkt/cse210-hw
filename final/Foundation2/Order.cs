@@ -3,6 +3,7 @@ public class Order
     private List<Product> _products = new List<Product>();
     private Customer _customer;
 
+    // SMT since you're just hard-coding the Products you could just pass in a List<Product> to the constructor
     public Order(Customer customer)
     {
         _customer = customer;
@@ -36,6 +37,8 @@ public class Order
         }
     }
 
+    // SMT Do not use Console in classes. Instead create a method that returns a string, like ToString(), that returns the string 
+    // to display by Console in Main(). Take a look at StringBuilder.
     public void GetPackingLabel()
     {
         Console.WriteLine(Line());
