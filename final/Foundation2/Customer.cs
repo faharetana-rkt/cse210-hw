@@ -10,9 +10,10 @@ public class Customer
     }
 
     // SMT you're supposed be checking if they reside in USA
+
     public bool IsResident()
     {
-        if (_address.Location() == "National")
+        if (_address.IsUsaAddress())
         {
             return true;
         }
@@ -22,8 +23,8 @@ public class Customer
         }
     }
 
-    public string ToStr()
+    public override string ToString()
     {
-        return $"{_name} \n{_address.GetAddress()}";
+        return $"{_name} \n{_address.ToString()}";
     }
 }

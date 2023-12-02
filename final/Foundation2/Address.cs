@@ -15,20 +15,20 @@ public class Address
 
 	// SMT method should return boolean i.e.
 	// public bool IsUsaAddress()
-	public string Location()
+	public bool IsUsaAddress()
 	{
 		if (_country == "USA")
 		{
-			return "National";
+			return true;
 		}
 		else
 		{
-			return "International";
+			return false;
 		}
 	}
 
 	// SMT you could use public override string ToString()
-	public string GetAddress()
+	public override string ToString()
 	{
 		return $"{_streetAddress} \n{_city}, {_stateProvince} \n{_country}";
 	}

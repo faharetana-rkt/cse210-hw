@@ -18,7 +18,7 @@ public class Product
 		return _price * _quantity;
 	}
 
-	public string ToStr()
+	public override string ToString()
 	{
 		return $"{_productId}: {_name}";
 	}
