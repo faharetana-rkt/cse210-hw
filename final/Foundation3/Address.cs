@@ -11,7 +11,7 @@ public class Address
         _county = county;
     }
 
-    public string ToStr()
+    public override string ToString()
     {
         return $"{_venue}, {_city}, {_county}";
     }

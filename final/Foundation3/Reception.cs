@@ -9,6 +9,6 @@ public class Reception : Event
 
     public override string FullDetails()
     {
-        return $"{_eventType}: {_eventTitle}, {_description} \nReservation mail: \n{_mailRSVP}\nDate: {_date} at {_time} \nLocation: {_address.ToStr()}";
+        return $"{_eventType}: {_eventTitle}, {_description} \nReservation mail: \n{_mailRSVP}\nDate: {_date} at {_time} \nLocation: {_address.ToString()}";
     }
 }

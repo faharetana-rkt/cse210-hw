@@ -11,6 +11,6 @@ public class Lecture : Event
 
     public override string FullDetails()
     {
-        return $"{_eventType}: {_eventTitle}, {_description} \nLecturer: {_speaker} \nCapacity: {_capacity} persons\nDate: {_date} at {_time} \nLocation: {_address.ToStr()}";
+        return $"{_eventType}: {_eventTitle}, {_description} \nLecturer: {_speaker} \nCapacity: {_capacity} persons\nDate: {_date} at {_time} \nLocation: {_address.ToString()}";
     }
 }

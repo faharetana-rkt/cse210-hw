@@ -19,12 +19,12 @@ public class Event
 
     public string StandardDetail()
     {
-        return $"{_eventTitle}, {_description} \n{_date} at {_time} \nLocation: {_address.ToStr()}";
+        return $"{_eventTitle}, {_description} \n{_date} at {_time} \nLocation: {_address.ToString()}";
     }
 
     public virtual string FullDetails()
     {
-        return $"{_eventType}: {_eventTitle}, {_description} \n{_date} at {_time} \nLocation: {_address.ToStr()}";
+        return $"{_eventType}: {_eventTitle}, {_description} \n{_date} at {_time} \nLocation: {_address.ToString()}";
     }
 
     public string ShortDescription()
