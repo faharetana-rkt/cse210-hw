@@ -40,13 +40,6 @@ public class Order
     // to display by Console in Main(). Take a look at StringBuilder.
     public string GetPackingLabel()
     {
-        // Console.WriteLine(Line());
-        // foreach (Product product in _products)
-        // {
-        //     Console.WriteLine(product.ToStr());
-        // }
-        // Console.WriteLine($"Total: {CalculateTotal()} $");
-        // Console.WriteLine(Line());
         StringBuilder packingLabel = new();
         packingLabel.AppendLine(Line());
         foreach (Product product in _products)
@@ -61,9 +54,6 @@ public class Order
 
     public string GetShippingLabel()
     {
-        // Console.WriteLine(Line());
-        // Console.WriteLine(_customer.ToStr());
-        // Console.WriteLine(Line());
         StringBuilder shippingLabel = new();
         shippingLabel.AppendLine(Line());
         shippingLabel.AppendLine(_customer.ToString());
